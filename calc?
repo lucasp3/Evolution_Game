@@ -1,0 +1,75 @@
+import math
+import sys
+
+
+def reruncalc():  # Asks to rerun calculator
+    print("\nWould you like to run this program again?")
+    rerun = input("Enter 'yes' or 'no' to proceed: ")
+
+    if rerun == "yes" or rerun == "y" or rerun == "Yes" or rerun == "YES":
+        print(" ")
+        calc()  # Runs calculator again
+
+    elif rerun == "no" or rerun == "n" or rerun == "No" or rerun == "NO":
+        sys.exit("\nThank you!")  # Terminates program
+
+    else:
+        print("\nYou did not enter a valid input.")
+        reruncalc()  # Asks to rerun calculator
+
+
+def calc():  # Calculator as a whole
+
+    print("Welcome to the Square Root Calculator!")
+    num = input('Enter a number and hit enter: ')
+
+    if num.isdigit() and int(num) > 0 and math.sqrt(float(num)) % 1 == 0:  # Is numerical, has value and is square
+            num = float(num)  # Makes num float
+            new = int(math.sqrt(num))  # Finds square root of num and turns into integer
+            ans = ("The square root of " + str(int(num)) + " is " + str(new))  # Answer message
+            border = ("-" * len(ans))  # Marks a border with length equal to that of answer message
+            print(" ")
+            print(border)
+            print(ans)
+            print(border)
+            reruncalc()  # Asks to run calculator again
+
+    elif num.isdigit() and int(num) > 0 and (math.sqrt(float(num)) % 1) > 0:  # Is numerical, has value and isn't square
+        print("\nYou did not input a square number. \nWould you still like to view the square root including decimals?")
+        nosqr = input("Enter 'yes' or 'no' to proceed: ")
+
+        if nosqr == "yes" or nosqr == "y" or nosqr == "Yes" or nosqr == "YES":
+            num = float(num)  # Makes num float
+            new = math.sqrt(num)  # Finds square root of num and includes decimal
+            ans = ("The square root of " + str(int(num)) + " is " + str(new))  # Answer message
+            border = ("-" * len(ans))  # Marks a border with length equal to that of answer message
+            print(" ")
+            print(border)
+            print(ans)
+            print(border)
+            reruncalc()  # Asks to run calculator again
+
+        elif nosqr == "no" or nosqr == "n" or nosqr == "No" or nosqr == "NO":
+            reruncalc()  # Asks to run calculator again
+
+        else:
+            print("\nYou did not enter a valid input.")
+            reruncalc()  # Asks to run calculator again
+
+    elif num.isdigit() and float(num) > 0 and float(num) % float(num) == 0:
+        num = float(num)  # Makes num float
+        new = math.sqrt(num)  # Finds square root of num and includes decimal
+        ans = ("The square root of " + str(num) + " is " + str(new))  # Answer message
+        border = ("-" * len(ans))  # Marks a border with length equal to that of answer message
+        print(" ")
+        print(border)
+        print(ans)
+        print(border)
+        reruncalc()  # Asks to run calculator again
+
+    else:
+        print("\nYou did not enter a valid number.")
+        reruncalc()  # Asks to run calculator again
+
+calc()  # Runs square root calculator
+
